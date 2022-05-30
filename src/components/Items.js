@@ -3,7 +3,6 @@ import Item from './Item'
 
 export class Items extends Component {
     render() {
-        // console.log(this.props.items, )
 
       return (
           <div className="">

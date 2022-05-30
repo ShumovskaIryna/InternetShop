@@ -753,10 +753,6 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    // this.setState({
-    //   currentItems: this.state.data.categories.find(el => el.name === this.state.category)
-    // })
-
     this.setState(() => {
       return {
         currentItems: this.state.data.categories.find(el => el.name === this.state.category)
