@@ -30,13 +30,10 @@ div .product-card {
   order: 0;
   flex-grow: 0;
 }
-
 .gallery {
   width: 320px;
   height: 325px;
-  flex: none;
-  align-self: stretch;
-  flex-grow: 0;
+  object-fit: contain;
 }
 .descrtiption {
   display: flex;
@@ -49,7 +46,7 @@ div .product-card {
   flex-grow: 0;
 }
 .title {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   font-size: 18px;
@@ -59,7 +56,7 @@ div .product-card {
   color: #8d8f9a;
 }
 .price {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
