@@ -4,13 +4,13 @@ import Item from './Item';
 
 function Items(props) {
   const {
-    items, onProductDesc, onAdd,
+    items, onShowProduct, onAdd,
   } = props;
   return (
     <div className="">
       {items?.products.map((el) => (
         <Item
-          onProductDesc={onProductDesc}
+          onShowProduct={onShowProduct}
           key={el.id}
           item={el}
           onAdd={onAdd}
@@ -28,7 +28,7 @@ Items.propTypes = {
       )),
     },
   ).isRequired,
-  onProductDesc: PropTypes.func.isRequired,
+  onShowProduct: PropTypes.func.isRequired,
   onAdd: PropTypes.func.isRequired,
 
 };

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import './Items.css';
 import './Order.css';
+import './FullProduct.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

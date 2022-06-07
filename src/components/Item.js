@@ -9,13 +9,13 @@ class Item extends Component {
             src={this.props.item.gallery[0]}
             className="gallery"
             alt="product"
-            onClick={() => this.props.onProductDesc}
+            onClick={() => this.props.onShowProduct(this.props.item)}
           />
           <div className="descrtiption">
             <p className="title">{this.props.item.name}</p>
             <b className="price">
-              {this.props.item.price || Math.round(350 + Math.random() * 0.01)}
-              $
+              {this.props.item.prices[0].amount }
+              {this.props.item.prices[0].currency.symbol}
             </b>
           </div>
           <div className="add-to-cart" onClick={() => this.props.onAdd(this.props.item)}>+</div>

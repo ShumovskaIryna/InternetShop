@@ -4,7 +4,8 @@ import Order from './Order';
 
 const showOrders = (props) => {
   let summa = 0;
-  props.orders.forEach((el) => summa += Number.parseFloat(el.price));
+  props.orders.forEach((el) => summa += Number.parseFloat(el.prices[0].amount));
+  
   return (
     <div className="full">
       <h2>You want to buy this:</h2>
@@ -12,8 +13,10 @@ const showOrders = (props) => {
         <Order onDelete={props.onDelete} key={el.id} item={el} />
       ))}
       <p className="summa">
-        Total:{summa}$
-        {/* {new Intl.NumberFormat().format(summa)} */}
+        Total : { }
+        {new Intl.NumberFormat().format(summa)}
+        {/* {props.prices.currency.symbol} */}
+        
       </p>
     </div>
   );
