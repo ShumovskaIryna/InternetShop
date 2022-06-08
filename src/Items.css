@@ -11,6 +11,7 @@ div .product-card {
   padding: 10px;
   margin: 5px;
   transition: box-shadow 500ms ease;
+  cursor:pointer;
 }
 .product-card:hover {
   box-shadow: 4px 4px 10px 3px grey;
@@ -34,6 +35,7 @@ div .product-card {
   width: 320px;
   height: 325px;
   object-fit: contain;
+  cursor:pointer;
 }
 .descrtiption {
   display: flex;
@@ -48,10 +50,9 @@ div .product-card {
 .title {
   font-family: 'Raleway';
   font-style: normal;
-  font-weight: 300;
   font-size: 18px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   color: #8d8f9a;
 }

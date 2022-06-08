@@ -2,24 +2,9 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Items from './components/Items';
 import Categories from './components/Categories';
-import ProductDesc from './components/ProductDesc';
+import ShowProduct from './components/ShowProduct';
 
 import { getAllGoods } from './request';
-
-// import { InMemoryCache } from 'apollo-cache-inmemory';
-// import ApolloClient from 'apollo-client';
-// import { HttpLink } from 'apollo-link-http';
-
-// const token = localStorage.getItem('token');
-// const client = new ApolloClient({
-//   link: new HttpLink({
-//      uri: 'http://localhost:4000/graphql',
-//      headers: {
-//       token: token || ''
-//     }
-//   }),
-//   cache: new InMemoryCache()
-// });
 
 class App extends React.Component {
   constructor(props) {
@@ -28,13 +13,14 @@ class App extends React.Component {
       orders: [],
       currentItems: {},
       category: 'all',
-      productDesc: false,
+      ShowProduct: false,
+      fullItem: {}
     };
 
     this.addToOrder = this.addToOrder.bind(this);
     this.deleteOrder = this.deleteOrder.bind(this);
     this.chooseCategory = this.chooseCategory.bind(this);
-    this.onProductDesc = this.onProductDesc.bind(this);
+    this.onShowProduct = this.onShowProduct.bind(this);
   }
 
   async componentDidMount() {
@@ -48,11 +34,10 @@ class App extends React.Component {
       data
     }));
   }
-
-  onProductDesc() {
-    this.setState({ productDesc: !this.state.productDesc });
+  onShowProduct(item) {
+    this.setState({ fullItem: item });
+    this.setState({ showProduct: !this.state.showProduct });
   }
-
   chooseCategory(category) {
     this.setState({
       category,
@@ -73,7 +58,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { currentItems, orders, productDesc } = this.state;
+    const { currentItems, orders} = this.state;
     return (
       Object.keys(currentItems).length
         ? (
@@ -83,15 +68,15 @@ class App extends React.Component {
               onDelete={this.deleteOrder}
             />
             <Categories
-              allCategories= {this.state.data}
-              chooseCategory={this.chooseCategory}
+              allCategories = {this.state.data}
+              chooseCategory = {this.chooseCategory}
             />
             <Items
-              onProductDesc={this.onProductDesc}
+              onShowProduct={this.onShowProduct}
               items={currentItems}
               onAdd={this.addToOrder}
             />
-            {productDesc && <ProductDesc />}
+            {this.state.showProduct && <ShowProduct onAdd={this.addToOrder} onShowProduct={this.onShowProduct} item={this.state.fullItem}/>}
           </div>
         )
         : <div>"not yet"</div>

@@ -11,7 +11,6 @@ class Categories extends Component {
     render() {
       return (
         <div className="categories">
-          {/* { this.state.allCategories?.map((el, name) => ( */}
             { this.props.allCategories.categories.map((el, name) => (
             <div
               className="element"

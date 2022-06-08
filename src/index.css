@@ -43,6 +43,7 @@ body {
   margin-top: -45px;
   margin-right: 15px;
   text-transform: uppercase;
+  cursor:pointer;
 }
 /* _Header / Elements / Desktop / Buttons */
 
@@ -89,7 +90,6 @@ label {
 label:active {
   color: #5ece7b;
 }
-
 /* Actions */
 .actions {
   display: flex;
