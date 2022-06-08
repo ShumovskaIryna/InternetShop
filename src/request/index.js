@@ -1,5 +1,4 @@
-module.exports = {
-    getAllGoods: async () => ({
+const getAllGoods =  async () => ({
 
   "data": {
     "categories": [
@@ -1358,4 +1357,6 @@ module.exports = {
   }
 
 })
+export {
+  getAllGoods,
 }
