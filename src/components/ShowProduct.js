@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MiniGallery from './MiniGallery'
+import ValueAttributes from './ValueAttributes';
 
 export class ShowProduct extends Component {
   
@@ -40,18 +41,26 @@ export class ShowProduct extends Component {
             <p className="name">{this.props.item.name}</p>
                
             <div className="description">
-                 <p className="atribut">{this.props.item.attributes[0]?.id || "("}:</p>
-                
-              <div className="attributes">
-            { this.props.item?.attributes[0]?.items.map((el, id, value) => (
-            <div
-                className="size"
-                key={id} background-color={value}
-              >{el.displayValue}
-            </div>
-          ))}
-              </div>
-      
+
+
+
+                <div className="all-attributs">
+                {this.props.item?.attributes.map((el, id) => (
+                  <div
+                    className="attribut"
+                    key={id}
+                  >{el.name}:
+                  
+                    <ValueAttributes
+                      atributes={el.items}
+                     />
+                  </div>
+                ))}
+                </div>
+                    
+
+
+             
               <b className="price">
                 <p className="atribut">Price:</p>
                 {this.props.item.prices[0].amount }
