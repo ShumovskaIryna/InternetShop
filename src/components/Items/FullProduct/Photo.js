@@ -7,7 +7,7 @@ class Photo extends Component {
         <img
             src={this.props.src}
             className="full-gallery1">
-            </img>
+            </img>  
     )
   }
 }

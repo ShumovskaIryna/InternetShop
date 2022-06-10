@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-export class Order extends Component {
+export class Cart extends Component {
   render() {
     return (
       <div className="item">
@@ -9,7 +9,6 @@ export class Order extends Component {
           src={this.props.item.gallery[0]}
           className="gallery"
           alt="product"
-          onClick={() => this.props.onShowProduct}
         />
         <p className="title">{this.props.item.name}</p>
         <b className="price">
@@ -22,4 +21,4 @@ export class Order extends Component {
   }
 }
 
-export default Order;
+export default Cart;

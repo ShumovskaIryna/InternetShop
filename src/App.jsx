@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Items from './components/Items';
-import Categories from './components/Categories';
-import ShowProduct from './components/ShowProduct';
+import TopComponent from './components/TopComponent/TopComponent';
+import Items from './components/Items/Items';
+import Categories from './components/TopComponent/Categories';
+import ShowProduct from './components/Items/FullProduct/FullProduct';
 
 import { getAllGoods } from './request';
 
@@ -63,7 +63,7 @@ class App extends React.Component {
       Object.keys(currentItems).length
         ? (
           <div className="wrapper">
-            <Navbar
+            <TopComponent
               orders={orders}
               onDelete={this.deleteOrder}
             />

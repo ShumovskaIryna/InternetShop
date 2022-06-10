@@ -1,4 +1,4 @@
-const getAllGoods =  async () => ({
+const getAllGoods = async () => ({
 
   "data": {
     "categories": [
@@ -781,22 +781,22 @@ const getAllGoods =  async () => ({
                 "type": "text",
                 "items": [
                   {
-                    "displayValue": "Small",
+                    "displayValue": "S",
                     "value": "S",
                     "id": "Small"
                   },
                   {
-                    "displayValue": "Medium",
+                    "displayValue": "M",
                     "value": "M",
                     "id": "Medium"
                   },
                   {
-                    "displayValue": "Large",
+                    "displayValue": "L",
                     "value": "L",
                     "id": "Large"
                   },
                   {
-                    "displayValue": "Extra Large",
+                    "displayValue": "XL",
                     "value": "XL",
                     "id": "Extra Large"
                   }
@@ -1356,7 +1356,35 @@ const getAllGoods =  async () => ({
     ]
   }
 
+});
+
+const getAllCurrency = async () => ({
+  "data": {
+    "currencies": [
+      {
+        "label": "USD",
+        "symbol": "$"
+      },
+      {
+        "label": "GBP",
+        "symbol": "£"
+      },
+      {
+        "label": "AUD",
+        "symbol": "A$"
+      },
+      {
+        "label": "JPY",
+        "symbol": "¥"
+      },
+      {
+        "label": "RUB",
+        "symbol": "₽"
+      }
+    ]
+  }
 })
 export {
   getAllGoods,
+  getAllCurrency,
 }

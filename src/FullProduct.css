@@ -131,11 +131,17 @@ margin-bottom: 10px;
   line-height: 30px;
   border: 1px solid #1D1F22;
   font-size: 16px;
+
+  transition: box-shadow 500ms ease;
 }
-.size:hover,
+.size:hover{
+background: #1D1F22;
+color:white;
+}
 .size:active{
 background: #1D1F22;
 color:white;
+box-shadow: 1px 1px 5px 1px grey;
 }
 .price{
 font-size: 18px;

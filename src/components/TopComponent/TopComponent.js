@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
-import Order from './Order';
+import Currency from './Currency';
+import Cart from './Cart';
+
 
 const showOrders = (props) => {
   let summa = 0;
   props.orders.forEach((el) => summa += Number.parseFloat(el.prices[0].amount));
-  
   return (
     <div className="full">
       <h2>You want to buy this:</h2>
       {props.orders.map((el) => (
-        <Order onDelete={props.onDelete} key={el.id} item={el} />
+        <Cart onDelete={props.onDelete} key={el.id} item={el} />
       ))}
       <p className="summa">
         Total : { }
         {new Intl.NumberFormat().format(summa)}
         {/* {props.prices.currency.symbol} */}
-        
       </p>
     </div>
   );
 };
-
 const showNothing = () => (
   <div className="empty">
     <h2>Now cart is empty... Yet</h2>
@@ -29,22 +28,27 @@ const showNothing = () => (
   </div>
 );
 
-export default function Navbar(props) {
+
+
+export default function TopComponent(props) {
   let [cartOpen, setCartOpen] = useState(false);
+  console.log(props)
   return (
     <header className="header">
-      <span className="logo"><img className="brand-logo" src="logo.png" alt="logo" /></span>
+
+      <span className="logo">
+        <img
+          className="brand-logo"
+          src="logo.png"
+          alt="logo"
+        />
+      </span>
 
       <div className="actions">
-        <div className="group">
-          <select className="frame">
-            <option value="1" label="$" disabled hidden>$</option>
-            <option value="1" label="$ USD">$ USD</option>
-            <option value="2" label="€ EUR">€ EUR</option>
-            <option value="3" label="¥ JPY">¥ JPY</option>
-          </select>
-        </div>
-
+      {/* <Currency
+        allCurrency={props?.categories?.products?.prices}
+        //chooseCurrency={this.chooseCurrency}
+      /> */}
         <FaShoppingCart onClick={() => setCartOpen(cartOpen = !cartOpen)} className={`shop-cart-button ${cartOpen && 'active'}`} />
         {cartOpen && (
         <div className="shop-cart">
@@ -53,6 +57,7 @@ export default function Navbar(props) {
         </div>
         )}
       </div>
+      
     </header>
   );
 }
