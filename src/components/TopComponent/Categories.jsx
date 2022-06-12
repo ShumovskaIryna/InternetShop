@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Categories extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
-    render() {
-      return (
-        <div className="categories">
-            { this.props.allCategories.categories.map(({ name }, index) => (
+
+function Categories(props) {
+  return (
+          <div className="categories">
+            { props.allCategories.categories.map(({ name }, index) => (
             <div
               className="element"
               key={index}
-              onClick={() => this.props.chooseCategory(name)}
-            >
+              onClick={() => props.chooseCategory(name)}
+              >
               <label>{name}</label>
             </div>
           ))}
         </div>
-      );
-    }
-  
-  }
+  )
+}
+
 export default Categories;

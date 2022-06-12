@@ -1,8 +1,8 @@
 import React from 'react';
 import TopComponent from './components/TopComponent/TopComponent';
 import Items from './components/Items/Items';
-import Categories from './components/TopComponent/Categories';
-import ShowProduct from './components/Items/FullProduct/FullProduct';
+//import Categories from './components/TopComponent/Categories';
+import FullProduct from './components/Items/FullProduct/FullProduct';
 
 import { getAllGoods } from './request';
 
@@ -34,9 +34,10 @@ class App extends React.Component {
       data
     }));
   }
+
   onShowProduct(item) {
     this.setState({ fullItem: item });
-    this.setState({ showProduct: !this.state.showProduct });
+    this.setState({ fullProduct: !this.state.fullProduct });
   }
   chooseCategory(category) {
     this.setState({
@@ -66,17 +67,24 @@ class App extends React.Component {
             <TopComponent
               orders={orders}
               onDelete={this.deleteOrder}
+              allCategories={this.state.data}
+              chooseCategory={this.chooseCategory}
             />
-            <Categories
+            {/* <Categories
               allCategories = {this.state.data}
               chooseCategory = {this.chooseCategory}
-            />
+            /> */}
             <Items
               onShowProduct={this.onShowProduct}
               items={currentItems}
               onAdd={this.addToOrder}
             />
-            {this.state.showProduct && <ShowProduct onAdd={this.addToOrder} onShowProduct={this.onShowProduct} item={this.state.fullItem}/>}
+            {this.state.fullProduct &&
+              <FullProduct
+                onAdd={this.addToOrder}
+                onShowProduct={this.onShowProduct}
+                item={this.state.fullItem}
+              />}
           </div>
         )
         : <div>"not yet"</div>

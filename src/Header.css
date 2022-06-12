@@ -31,19 +31,16 @@ body {
   flex-direction: row;
   align-items: center;
   padding: 0px;
-
+  display: inline-block;
   position: absolute;
   width: 234px;
   height: 56px;
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin: 0px 70px;
-  display: inline-block;
-  margin-top: -45px;
-  margin-right: 15px;
+  margin: 40px 0px 0px 90px;
   text-transform: uppercase;
-  cursor:pointer;
+  cursor: pointer;
 }
 /* _Header / Elements / Desktop / Buttons */
 
