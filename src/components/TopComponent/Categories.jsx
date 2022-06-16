@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function Categories(props) {
   return (
           <div className="categories">
@@ -16,5 +15,4 @@ function Categories(props) {
         </div>
   )
 }
-
 export default Categories;

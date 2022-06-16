@@ -3,6 +3,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 //import Items from '../Items/Items';
 import Cart from './Cart';
 import Categories from './Categories';
+import Currency from './Currency';
 
 const showOrders = (props) => {
   let summa = 0;
@@ -12,13 +13,11 @@ const showOrders = (props) => {
     <div className="full">
       <h2>You want to buy this:</h2>
       {props.orders.map((el) => (
-        
         <Cart
           onDelete={props.onDelete}
           key={el.id}
           item={el} />
       ))}
-      
       <p className="summa">
         Total : { }
         {new Intl.NumberFormat().format(summa)}
@@ -26,38 +25,31 @@ const showOrders = (props) => {
     </div>
   );
 };
-
 const showNothing = () => (
   <div className="empty">
     <h2>Now cart is empty... Yet</h2>
     <h5>You can start the shopping right now</h5>
   </div>
 );
-  
 export default function TopComponent(props) {
-  const { chooseCategory } = props;
+  const { chooseCategory, chooseCurrency } = props;
   let [cartOpen, setCartOpen] = useState(false);
-
   let [category, setCategory] = useState("all")
   // let [currentItems, setCurrentItems] = useState()
-
-// const chooseCategory =  () => {
+  let [currency, setCurrency] = useState("USD")
+//   const chooseCategory =  () => {
 //     setCategory(currentItems => {
 //       return { currentItems: this.state.data.categories.find((el) => el.name === category)}
 //     });
 //   }
-  
   //console.log(category)
   // useEffect(() => {
   //    //setCurrentItems()
   //     setCurrentItems(currentItems  => props.data.categories.find((el) => el.name === category))
   //   }, [category])
-
   return (
     <header className="header">
       <Categories
-        //onClick={() => setCategory(category)}
-        //onClick={() => console.log(currentItems, category)}
         allCategories={props.allCategories}
         chooseCategory={chooseCategory}
       />
@@ -68,12 +60,11 @@ export default function TopComponent(props) {
           alt="logo"
         />
       </span>
-
       <div className="actions">
-      
-        {/* <Currency
-      /> */}
-        
+        <Currency
+          allCurrency={props.allCurrency}
+          chooseCurrency={chooseCurrency}
+      />
         <FaShoppingCart
           onClick={() => setCartOpen(cartOpen = !cartOpen)}
           className={`shop-cart-button ${cartOpen && 'active'}`}

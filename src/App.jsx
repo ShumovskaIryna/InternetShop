@@ -1,10 +1,11 @@
 import React from 'react';
 import TopComponent from './components/TopComponent/TopComponent';
 import Items from './components/Items/Items';
-//import Categories from './components/TopComponent/Categories';
 import FullProduct from './components/Items/FullProduct/FullProduct';
 
 import { getAllGoods } from './request';
+import { getAllCurrency } from './request';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
       orders: [],
       currentItems: {},
       category: 'all',
+      currency: 'USD',
       ShowProduct: false,
       fullItem: {}
     };
@@ -20,6 +22,7 @@ class App extends React.Component {
     this.addToOrder = this.addToOrder.bind(this);
     this.deleteOrder = this.deleteOrder.bind(this);
     this.chooseCategory = this.chooseCategory.bind(this);
+    this.chooseCurrency = this.chooseCurrency.bind(this);
     this.onShowProduct = this.onShowProduct.bind(this);
   }
 
@@ -27,11 +30,15 @@ class App extends React.Component {
     const { category } = this.state;
 
     const { data } = await getAllGoods();
+    const { dataC } = await getAllCurrency();
 
     const currentItems = data.categories.find((el) => el.name === category);
+    //const currentCurrency = data.currencies.find((el) => el.name === currency);
+
     this.setState(() => ({
       currentItems,
-      data
+      data,
+      dataC
     }));
   }
 
@@ -45,7 +52,12 @@ class App extends React.Component {
       currentItems: this.state.data.categories.find((el) => el.name === category),
     });
   }
-
+   chooseCurrency(currency) {
+    this.setState({
+      currency,
+      //currentItems: this.state.data.categories.find((el) => el.name === category),
+    });
+  }
   deleteOrder(id) {
     this.setState({ orders: this.state.orders.filter((el) => el.id !== id) });
   }
@@ -68,12 +80,10 @@ class App extends React.Component {
               orders={orders}
               onDelete={this.deleteOrder}
               allCategories={this.state.data}
+              allCurrency={this.state.dataC}
               chooseCategory={this.chooseCategory}
+              chooseCurrency={this.chooseCurrency}
             />
-            {/* <Categories
-              allCategories = {this.state.data}
-              chooseCategory = {this.chooseCategory}
-            /> */}
             <Items
               onShowProduct={this.onShowProduct}
               items={currentItems}

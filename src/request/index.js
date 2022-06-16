@@ -1359,7 +1359,7 @@ const getAllGoods = async () => ({
 });
 
 const getAllCurrency = async () => ({
-  "data": {
+  "dataC": {
     "currencies": [
       {
         "label": "USD",
